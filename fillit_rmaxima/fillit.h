@@ -23,12 +23,18 @@
 #include <sys/stat.h>
 # include "libft/libft.h"
 
+// typedef struct t_fillit
+// {
+//             char **av;
+//     struct t_fillit *next;
+// };              s_fillit
+
 typedef struct t_fillit
 {
-            char **av;
+    char            *str;
     struct t_fillit *next;
-};              s_fillit
-
+    
+}               s_fillit;
 
 
 int     main(int ar, char **av);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:19:28 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/10/18 16:11:03 by rmaxima          ###   ########.fr       */
+/*   Updated: 2019/10/21 16:37:33 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,19 @@
 
 void       tetrimino(const int fd, char **av)
 {
-    int reader;
-    int i;
+    int     reader;
+    int     i;
     char    buff[BUFF_SIZE + 1];
     char    tetramin[4];
+    s_fillit *tetro;
+    s_fillit *head;
     
 
     if (fd < 0 || !av)
         write(1, "error", 5);
     while ((reader = read(fd, buff, BUFF_SIZE)) > 0)
     {
-        buff[reader] = '\0';
-        i = 0;
-        while(reader > 0)
-        {
-            
-            printf("%c", buff[i]);
-            reader--;
-            i++;
-        }
+       
     }
     
 }
