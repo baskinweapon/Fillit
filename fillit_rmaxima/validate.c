@@ -6,48 +6,38 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 16:38:59 by alex              #+#    #+#             */
-/*   Updated: 2019/10/22 12:23:57 by alex             ###   ########.fr       */
+/*   Updated: 2019/10/23 09:21:29 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int     valid_tetramin(char *str)
+int     tetramino(char *str)
 {
     int i;
-    int brink;
-    int d[5][5];
-    int j;
-    int k;
-    int t;
-    
-    brink = 0;
+    int count;
+
     i = 0;
+    count = 0;
     while (str[i])
     {
-        j = 0;
-        while (d[j])
+        if (str[i] == '#')
         {
-            k = 0;
-            while (d[j][k])
-            {
-                if (str[i] == '#')
-                    d[j][k] = 1;
-                if (str[i] == '.')
-                    d[j][k] = 0;
-                if (str[i] == '\n')
-                    j++;;
-                k++;
-            }
+            if ((i + 1) < 20 && str[i + 1] == '#')
+                count++;
+            if ((i - 5) >= 0 && str[i - 5] == '#')
+                count++;
+            if ((i + 5) < 20 && str[i + 5] == '#')
+                count++;
+            if ((i - 1) >= 0 && str[i - 1] == '#')
+                count++;
+            printf("%d\n", count);      
         }
+        i++;
     }
-   for (t=0; t<j; ++t)
-    {
-        for (i=0; i<k; ++i)
-            printf("%d  ", d[t][i]);
-    printf ("\n");
-    }
-    return (1);
+    if (count == 6 || count == 8)
+        return (1);
+    return (0);
 }
 
 int     validate(char *str, int fd)
@@ -55,7 +45,7 @@ int     validate(char *str, int fd)
     int i;
     int count;
     int ncounter;
-    int icounter;
+    int tcounter;
 
     
     if (fd < 0)
@@ -63,7 +53,7 @@ int     validate(char *str, int fd)
     i = 0;
     count = 0;
     ncounter = 0;
-    icounter = 0;
+    tcounter = 0;
     while (str[i])
     {
         while (str[i] != '\n' && str[i])
@@ -71,7 +61,7 @@ int     validate(char *str, int fd)
             count++;
             if (str[i] == '#')
             {
-              icounter++;  
+              tcounter++;  
             }
             i++;        
         }
@@ -81,11 +71,11 @@ int     validate(char *str, int fd)
         count = 0;
         i++;
     }
-    if (icounter != 4)
+    if (tcounter != 4)
         return (0);
     if (ncounter != 4)
         return (0);
-    if (valid_tetramin(str) == 0)
+    if (tetramino(str) == 0)
         return (0);
     return (1);
 }
@@ -93,7 +83,7 @@ int     validate(char *str, int fd)
 int main()
 {
     char *str = "Hello\nmy\nname\nis\n";
-    char *str2 = "..##\n....\n..#.\n...#\n";
+    char *str2 = "..##\n..##\n....\n....\n";
     int fd = 1;
     printf("str = %d\n", validate(str, fd));
     printf("str2 = %d\n", validate(str2, fd));
