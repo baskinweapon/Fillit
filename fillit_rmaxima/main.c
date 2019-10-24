@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:19:28 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/10/21 16:37:33 by alex             ###   ########.fr       */
+/*   Updated: 2019/10/24 11:20:12 by rmaxima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,30 @@ void       tetrimino(const int fd, char **av)
 {
     int     reader;
     int     i;
+    int     j;
+    int     n;
     char    buff[BUFF_SIZE + 1];
-    char    tetramin[4];
-    s_fillit *tetro;
-    s_fillit *head;
+    char    tetr[26];
     
-
     if (fd < 0 || !av)
         write(1, "error", 5);
     while ((reader = read(fd, buff, BUFF_SIZE)) > 0)
     {
-       
+       buff[reader] = '\0';
+       i = 0;
+        while (i < 26)
+        {
+            tetr[i] = buff[i];
+            i++;   
+        }
+        printf("%s", tetr);
+        if (validate(tetr, fd) == 1)
+            printf("Yes");
+        else 
+            printf("No");
     }
-    
+    if (reader == -1)
+		printf("error");
 }
 
 int     main(int ar, char **av)
@@ -38,9 +49,11 @@ int     main(int ar, char **av)
 
     i = 0;
     fd = 0;
-    fd = open("test.txt", O_RDONLY);
+    fd = open("test2.txt", O_RDONLY);
     while(av[i])
     {
         tetrimino(fd, &av[i]);
+        i++;
     }
+    return (0);
 }
