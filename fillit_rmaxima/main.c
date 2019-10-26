@@ -6,7 +6,7 @@
 /*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:19:28 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/10/24 11:20:12 by rmaxima          ###   ########.fr       */
+/*   Updated: 2019/10/26 16:00:34 by rmaxima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ void       tetrimino(const int fd, char **av)
 {
     int     reader;
     int     i;
-    int     j;
-    int     n;
     char    buff[BUFF_SIZE + 1];
-    char    tetr[26];
+    char    tetr[21];
     
     if (fd < 0 || !av)
         write(1, "error", 5);
@@ -27,7 +25,7 @@ void       tetrimino(const int fd, char **av)
     {
        buff[reader] = '\0';
        i = 0;
-        while (i < 26)
+        while (i < 20)
         {
             tetr[i] = buff[i];
             i++;   
@@ -46,10 +44,11 @@ int     main(int ar, char **av)
 {
     int fd;
     int i;
-
+    
+    ar = 0;
     i = 0;
     fd = 0;
-    fd = open("test2.txt", O_RDONLY);
+    fd = open("test.txt", O_RDONLY);
     while(av[i])
     {
         tetrimino(fd, &av[i]);

@@ -6,14 +6,14 @@
 /*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:27:50 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/10/24 10:52:25 by rmaxima          ###   ########.fr       */
+/*   Updated: 2019/10/24 15:07:35 by rmaxima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-#define BUFF_SIZE 24
+#define BUFF_SIZE 21
 
 #include <stdio.h>
 #include <unistd.h>

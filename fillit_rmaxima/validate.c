@@ -6,7 +6,7 @@
 /*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 16:38:59 by alex              #+#    #+#             */
-/*   Updated: 2019/10/24 10:49:55 by rmaxima          ###   ########.fr       */
+/*   Updated: 2019/10/26 15:58:54 by rmaxima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int     validate(char *str, int fd)
             i++;        
         }
         ncounter++;
-        if (count != 4)
+        if (count > 5)
             return (0);
         count = 0;
         i++;
