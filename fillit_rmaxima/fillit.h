@@ -6,7 +6,7 @@
 /*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:27:50 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/10/24 15:07:35 by rmaxima          ###   ########.fr       */
+/*   Updated: 2019/10/26 17:28:48 by rmaxima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,21 @@
 //     struct t_fillit *next;
 // };              s_fillit
 
-typedef struct t_fillit
+typedef struct s_fillit
 {
-    char            *str;
-    struct t_fillit *next;
+    char            **str;
+    int             x;
+    int             y;
+    struct s_fillit *next;
     
-}               s_fillit;
+}               t_fillit;
 
 // validate.c
 int     tetramino(char *str);
 int     validate(char *str, int fd);
 
-
+//list tetramino
+void    list_tetramino(char *str);
 
 int     main(int ar, char **av);
 

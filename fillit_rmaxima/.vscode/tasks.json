@@ -14,7 +14,8 @@
 				"-Werror",
 				"${workspaceFolder}/main.c",
 				"${workspaceFolder}/validate.c",
-				"${workspaceFolder}/libft/libft.a",	
+				"${workspaceFolder}/libft/libft.a",
+				"${workspaceFolder}/list_tetramino.c",	
 				"-o",
 				"${workspaceFolder}/a.out"
 			],

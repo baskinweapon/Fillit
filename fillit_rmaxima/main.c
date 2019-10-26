@@ -6,7 +6,7 @@
 /*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:19:28 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/10/26 16:00:34 by rmaxima          ###   ########.fr       */
+/*   Updated: 2019/10/26 17:27:56 by rmaxima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void       tetrimino(const int fd, char **av)
         }
         printf("%s", tetr);
         if (validate(tetr, fd) == 1)
-            printf("Yes");
+            list_tetramino(tetr);
         else 
             printf("No");
     }
@@ -48,7 +48,7 @@ int     main(int ar, char **av)
     ar = 0;
     i = 0;
     fd = 0;
-    fd = open("test.txt", O_RDONLY);
+    fd = open("test2.txt", O_RDONLY);
     while(av[i])
     {
         tetrimino(fd, &av[i]);
