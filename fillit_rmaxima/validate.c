@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 16:38:59 by alex              #+#    #+#             */
-/*   Updated: 2019/10/26 15:58:54 by rmaxima          ###   ########.fr       */
+/*   Updated: 2019/10/28 15:31:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,13 @@ int     tetramino(char *str)
     return (0);
 }
 
-int     validate(char *str, int fd)
+int     validate(char *str)
 {
     int i;
     int count;
     int ncounter;
     int tcounter;
 
-    
-    if (fd < 0)
-        return (0);
     i = 0;
     count = 0;
     ncounter = 0;
@@ -66,7 +63,7 @@ int     validate(char *str, int fd)
             i++;        
         }
         ncounter++;
-        if (count > 5)
+        if (count != 4)
             return (0);
         count = 0;
         i++;
