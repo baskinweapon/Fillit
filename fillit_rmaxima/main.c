@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:19:28 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/10/28 16:16:10 by user             ###   ########.fr       */
+/*   Updated: 2019/10/30 13:07:44 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int     main(int ar, char **av)
     ar = 0;
     i = 0;
     fd = 0;
-    fd = open("test.txt", O_RDONLY);
+    fd = open("test2.txt", O_RDONLY);
     while(av[i])
     {
         tetrimino(fd, &av[i]);
