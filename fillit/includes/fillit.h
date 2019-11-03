@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:15:02 by mwilbur           #+#    #+#             */
-/*   Updated: 2019/11/02 19:21:53 by alex             ###   ########.fr       */
+/*   Updated: 2019/11/03 12:28:41 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@
 #include <stdio.h>
 
 typedef struct		s_flist {
-	char 			tetr[21];
-	struct s_flist	*next;
+    char 			**tetr;
+    int             x;
+    int             y;
+    int             width;
+    int             heigh;
+    struct s_flist	*next;
 }					t_flist;
 
 int		check_tetramino(char *str);
