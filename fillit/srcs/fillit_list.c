@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fillit_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 12:08:40 by mwilbur           #+#    #+#             */
-/*   Updated: 2019/10/28 16:40:23 by mwilbur          ###   ########.fr       */
+/*   Updated: 2019/11/02 18:49:11 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/fillit.h"
+#include "../includes/fillit.h"
 #include <stdio.h> //Удалить
 #include <string.h> //delete
 
@@ -56,18 +56,18 @@ void	ft_flstdisplay(t_flist *lst) // Удалить
 	printf("%s", cur->tetr);
 }
 
-int		main(void)
-{
-	t_flist *lst = NULL;
-	t_flist *head = lst;
-	char first[21] = "..#.\n..#.\n....\n....\n\n";
-	char second[21] = "....\n###.\n....\n.#..\n\n";
-	char third[21] = "##.\n..##\n..#.\n...#\n\n";
+// int		main(void)
+// {
+// 	t_flist *lst = NULL;
+// 	t_flist *head = lst;
+// 	char first[21] = "..#.\n..#.\n....\n....\n\n";
+// 	char second[21] = "....\n###.\n....\n.#..\n\n";
+// 	char third[21] = "##.\n..##\n..#.\n...#\n\n";
 
-	lst = add_element(lst, first);
-	// ft_flstdisplay(lst);
-	lst = add_element(lst, second);
-	lst = add_element(lst, third);
-	ft_flstdisplay(head);
-	return (0);
-}
+// 	lst = add_element(lst, first);
+// 	// ft_flstdisplay(lst);
+// 	lst = add_element(lst, second);
+// 	lst = add_element(lst, third);
+// 	ft_flstdisplay(head);
+// 	return (0);
+// }

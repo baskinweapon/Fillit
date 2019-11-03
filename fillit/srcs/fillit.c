@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:15:16 by mwilbur           #+#    #+#             */
-/*   Updated: 2019/10/25 13:22:15 by mwilbur          ###   ########.fr       */
+/*   Updated: 2019/11/03 12:12:56 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,28 @@
 int		main(int argc, char **argv)
 {
 	if (argc == 1)
-		retun (0);
+		return (0);
 	int ret;
 	int fd;
+	int i;
+    char tetr[21];
 	char buff[BUFF_SIZE + 1];
-	t_flist *list;
+	// t_flist *list = NULL;
 
 	ret = 0;
 	fd = open(argv[1], O_RDONLY);
 	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
 	{
 		buff[ret] = '\0';
-		if ((checks(buff, fd, ret)) == 0)
-		{
-			ft_flistclear(list);
-			return (0);
-		}
-
+		i = 0;
+        while (i < 20)
+        {
+            tetr[i] = buff[i];
+            i++;
+        }
+        tetr[i] = '\0';
+		if ((validate(tetr, fd)) == 0)
+			printf("validerror");
+		array_tetramino(tetr);
 	}
 }

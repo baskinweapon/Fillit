@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   fillit_rmaxima.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:27:50 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/10/30 14:03:10 by alex             ###   ########.fr       */
+/*   Updated: 2019/11/02 18:42:44 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int     tetramino(char *str);
 int     validate(char *str);
 
 //list tetramino
-void    list_tetramino(char **str, int x, int y, int weight, int height);
 void    massive_tetramino(char *str);
 
 int     main(int ar, char **av);

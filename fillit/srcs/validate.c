@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 16:38:59 by alex              #+#    #+#             */
-/*   Updated: 2019/10/24 10:49:55 by rmaxima          ###   ########.fr       */
+/*   Updated: 2019/11/03 12:11:06 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "fillit.h"
+#include "../includes/fillit.h"
 
 int     tetramino(char *str)
 {
@@ -58,6 +58,8 @@ int     validate(char *str, int fd)
     {
         while (str[i] != '\n' && str[i])
         {
+            if (str[i] != '#' && str[i] != '.' && str[i] != '\n')
+                return (0);
             count++;
             if (str[i] == '#')
             {
@@ -80,14 +82,3 @@ int     validate(char *str, int fd)
     return (1);
 }
 
-// int main()
-// {
-//     char *str = "Hello\nmy\nname\nis\n";
-//     char *str2 = "..##\n..##\n....\n....\n";
-//     int fd = 1;
-//     printf("str = %d\n", validate(str, fd));
-//     printf("str2 = %d\n", validate(str2, fd));
-//     fd = -1;
-//     printf("fd<0 = %d\n", validate(str, fd));
-//     return (0);
-// }
