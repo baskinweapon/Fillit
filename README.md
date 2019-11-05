@@ -6,4 +6,4 @@
 
 # 
 
-![Watch the video](https://youtu.be/yUPtTk_0tVc)
+![](https://yapx.ru/v/FnHZ6)
