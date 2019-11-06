@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_tetramino_rmaxima.c                           :+:      :+:    :+:   */
+/*   coordinate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 16:47:01 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/11/03 15:11:54 by alex             ###   ########.fr       */
+/*   Updated: 2019/11/05 18:50:46 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void    coordinate(char **res)
+void    push(t_flist **head, t_flist *list_coordinate)
+{
+    t_flist *tmp;
+
+    tmp = (t_flist*)malloc(sizeof(t_flist));
+    tmp->tetr = list_coordinate->tetr;
+    tmp->x = list_coordinate->x;
+    tmp->y = list_coordinate->y;
+    tmp->width = list_coordinate->width;
+    tmp->heigh = list_coordinate->heigh;
+    tmp->next = (*head);
+    (*head) = tmp;
+    map(tmp);
+}
+
+void    coordinate(char **res, int heigh, int y)
 {
     t_flist *list_tetramino;
+    t_flist *head;
     int i;
     int j;
     int count;
@@ -23,6 +39,10 @@ void    coordinate(char **res)
 
     j = 0;
     count = 0;
+    head = NULL;
+    list_tetramino->tetr = res;
+    list_tetramino->y = y;
+    list_tetramino->heigh = heigh;
     while (j < 5)
     {
         i = 0;
@@ -30,22 +50,20 @@ void    coordinate(char **res)
         {
             if (res[i][j] == '#' && count == 0)
             {
-                list_tetramino->x = j + 1;
-                list_tetramino->y = i + 1;
-                count++;
+                list_tetramino->x = j;
             }
             if (res[i][j] == '#')
                 count++;
             if (res[i][j] == '#' && count == 4)
             {
-                list_tetramino->width = j - list_tetramino->x;
-                list_tetramino->heigh = i - list_tetramino->y;
+                list_tetramino->width = j + 1 - list_tetramino->x;
             }
             i++;
         }
         j++;
     }
-    printf("x = %d y = %d width = %d heigh = %d\n", list_tetramino->x, list_tetramino->y, list_tetramino->width, list_tetramino->heigh);
+    //printf("tetr = %s x = %d y = %d width = %d heigh = %d\n", list_tetramino->tetr[0], list_tetramino->x, list_tetramino->y, list_tetramino->width, list_tetramino->heigh);
+   push(&head, list_tetramino);
 }
 
 void      array_tetramino(char *str)
@@ -53,10 +71,14 @@ void      array_tetramino(char *str)
     char **res;
     int i;
     int j;
+    int y1;
+    int y2;
+    int count;
 
     if (!(res = (char**)malloc(sizeof(char*) * 4)))
         printf("Error");
     i = 0;
+    count = 0;
     while (i < 4)
     {
         res[i] = (char*)malloc(sizeof(char) * 4);
@@ -64,12 +86,19 @@ void      array_tetramino(char *str)
         while (j < 5)
         {
             res[i][j] = str[i * 5 + j];
+            if (res[i][j] == '#' && count == 0)
+            {
+                y1 = i;
+            }
+            if (res[i][j] == '#')
+                count++;
+            if (res[i][j] == '#' && count == 4)
+                y2 = i;
             j++;
         }
-
-//        printf("%d = %s", i, res[i]);
+        printf("%d = %s", i, res[i]);
         i++;
     }
-    coordinate(res);
+    coordinate(res, y2 + 1 - y1, y1);
 }
 

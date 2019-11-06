@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 16:38:59 by alex              #+#    #+#             */
-/*   Updated: 2019/11/03 12:11:06 by alex             ###   ########.fr       */
+/*   Updated: 2019/11/05 18:51:51 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,7 @@ int     validate(char *str, int fd)
                 return (0);
             count++;
             if (str[i] == '#')
-            {
-              tcounter++;  
-            }
+                tcounter++;  
             i++;        
         }
         ncounter++;
