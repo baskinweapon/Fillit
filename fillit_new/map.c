@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/07 13:51:24 by rmaxima           #+#    #+#             */
+/*   Updated: 2019/11/07 15:04:43 by rmaxima          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fillit.h"
 
@@ -19,16 +30,15 @@ void	*ft_memset(void *b, int c, size_t len)
 int     map_size(int reader)
 {
     int size;
-    int quantity_tetr;
 
 //    if (reader % 21 != 0)
 //        quantity_tetr = reader / 21 + 1;
 //    else
 //        quantity_tetr = reader / 21;
     size = 2;
-    while (size * size < quantity_tetr)
+    while (size * size < reader)
         size++;
-//    printf("%d\n", quantity_tetr);
+//    printf("%d\n", reader);
 //    printf("%d\n", size);
     return (size);
 }

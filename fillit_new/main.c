@@ -1,4 +1,15 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/07 13:51:13 by rmaxima           #+#    #+#             */
+/*   Updated: 2019/11/07 16:01:56 by rmaxima          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 t_flist    *read_tetramino(char *file)
@@ -6,8 +17,6 @@ t_flist    *read_tetramino(char *file)
     int reader;
     char buff[545];
     int fd;
-    int i;
-    int j;
 
     reader = 0;
     fd = open(file, O_RDONLY);
@@ -28,12 +37,12 @@ int        main(int ar, char **av)
 
     if (ar != 2)
     {
-        //ft_putstr("usage: ./fillit source_file\n");
+        ft_putstr("usage: ./fillit source_file\n");
         return (1);
     }
     if ((list_tetramino = read_tetramino(av[1])) == NULL)
     {
-        //ft_putstr("error\n");
+        ft_putstr("error\n");
         return (1);
     }
     filling_map(list_tetramino);
