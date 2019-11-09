@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 13:50:55 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/11/07 15:21:31 by rmaxima          ###   ########.fr       */
+/*   Updated: 2019/11/09 14:59:43 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int     map_size(int reader);
 int     count_list(t_flist *list);
 
 //filling map
-t_map   *filling_map(t_flist *list_tetramino);
+void    filling_map(t_flist *list_tetramino);
 void    place_tetramino(t_flist *list_tetramino, t_map *map, char c);
 
 //main

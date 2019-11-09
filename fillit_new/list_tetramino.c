@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_tetramino.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 13:51:03 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/11/07 13:56:21 by rmaxima          ###   ########.fr       */
+/*   Updated: 2019/11/09 14:59:09 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_flist     *make_list(char *str, int c)
     {
         if (str[i] == '#')
         {
-            ptr->coordinate[x] = (i <= 5) ? i : (i % 5);
+            ptr->coordinate[x] = (i >= 5) ? (i % 5) : i;
             ptr->coordinate[y] = i / 5;
             x += 2;
             y += 2;
@@ -64,8 +64,8 @@ t_flist     *make_list(char *str, int c)
     return (zero_coordinate(ptr));
 }
 
- t_flist    *add_list(char *str, int reader)
- {
+t_flist    *add_list(char *str, int reader)
+{
     t_flist     *begin;
     t_flist     *next_tetramino;
     int         i;
@@ -90,4 +90,4 @@ t_flist     *make_list(char *str, int c)
     }
     next_tetramino->next = NULL;
     return (begin);
- }
+}
