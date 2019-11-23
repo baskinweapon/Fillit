@@ -3,49 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 13:07:05 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/09/18 16:08:03 by rmaxima          ###   ########.fr       */
+/*   Created: 2019/09/13 18:57:47 by mwilbur           #+#    #+#             */
+/*   Updated: 2019/09/16 18:15:08 by mwilbur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		is_negative(int *n, int *neg)
+static int	ft_nlen(int n)
 {
-	if (*n < 0)
+	int		len;
+	long	nb;
+
+	len = 0;
+	nb = n;
+	if (nb < 0)
 	{
-		*n *= -1;
-		*neg = 1;
+		nb *= -1;
+		len++;
 	}
+	while (nb >= 10)
+	{
+		nb /= 10;
+		len++;
+	}
+	return (len + 1);
 }
 
-char			*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
-	int		tmp;
-	int		i;
-	int		neg;
-	char	*str;
+	int		len;
+	long	nb;
+	char	*result;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	tmp = n;
-	i = 2;
-	neg = 0;
-	is_negative(&n, &neg);
-	while (tmp /= 10)
-		i++;
-	i += neg;
-	if ((str = (char*)malloc(sizeof(char) * i)) == NULL)
+	len = ft_nlen(n);
+	nb = n;
+	result = (char*)malloc(sizeof(char) * (len + 1));
+	if (!result)
 		return (NULL);
-	str[--i] = '\0';
-	while (i--)
+	if (nb < 0)
 	{
-		str[i] = n % 10 + '0';
-		n = n / 10;
+		result[0] = '-';
+		nb *= -1;
 	}
-	if (neg)
-		str[0] = '-';
-	return (str);
+	result[len--] = '\0';
+	if (nb == 0)
+		result[0] = '0';
+	while (nb > 0)
+	{
+		result[len--] = 48 + (nb % 10);
+		nb /= 10;
+	}
+	return (result);
 }

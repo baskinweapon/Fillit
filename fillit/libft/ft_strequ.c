@@ -3,29 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 18:07:45 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/09/18 17:38:17 by rmaxima          ###   ########.fr       */
+/*   Created: 2019/09/13 18:12:39 by mwilbur           #+#    #+#             */
+/*   Updated: 2019/09/19 19:30:05 by mwilbur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int		ft_strequ(char const *s1, char const *s2)
 {
-	int i;
+	int				i;
+	unsigned char	*first;
+	unsigned char	*second;
 
-	i = 0;
 	if (!s1 || !s2)
 		return (0);
-	while (s1[i] != '\0' && s2[i] != '\0')
+	i = 0;
+	first = (unsigned char*)s1;
+	second = (unsigned char*)s2;
+	while (first[i] && second[i])
 	{
-		if (s1[i] != s2[i])
+		if (first[i] != second[i])
 			return (0);
 		i++;
 	}
-	if (s1[i] != s2[i])
+	if ((!first[i] && second[i]) || (first[i] && !second[i]))
 		return (0);
 	return (1);
 }

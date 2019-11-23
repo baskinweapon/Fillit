@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/14 16:02:11 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/09/18 16:48:28 by rmaxima          ###   ########.fr       */
+/*   Created: 2019/09/08 16:47:01 by mwilbur           #+#    #+#             */
+/*   Updated: 2019/09/17 14:35:46 by mwilbur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,21 @@ char	*ft_strstr(const char *haystack, const char *needle)
 {
 	int		i;
 	int		j;
+	int		k;
+	char	*result;
 
 	i = 0;
-	if (needle[0] == '\0')
+	if (!(*needle))
 		return ((char*)haystack);
-	while (haystack[i] != '\0')
+	while (haystack[i])
 	{
 		j = 0;
-		while (needle[j] == haystack[i + j])
-		{
-			if (needle[j + 1] == '\0')
-				return ((char*)haystack + i);
+		k = i;
+		result = (char*)&haystack[i];
+		while (haystack[k] && needle[j] == haystack[k++])
 			j++;
-		}
+		if (!needle[j])
+			return (result);
 		i++;
 	}
 	return (NULL);

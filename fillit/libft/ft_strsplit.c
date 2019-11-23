@@ -3,89 +3,87 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 13:11:01 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/09/18 15:58:25 by rmaxima          ###   ########.fr       */
+/*   Created: 2019/09/17 16:24:30 by mwilbur           #+#    #+#             */
+/*   Updated: 2019/09/19 21:01:20 by mwilbur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_count_words(char const *s, char c)
+static int	ft_strlen_delimiter(char **s, char c)
 {
-	int	i;
+	int counter;
+
+	counter = 0;
+	if (!s || !c)
+		return (0);
+	while (*(*s) == c)
+		(*s)++;
+	while ((*s)[counter] && (*s)[counter] != c)
+		counter++;
+	return (counter);
+}
+
+static char	*ft_strcpy_delimiter(char *dst, char **src, char c)
+{
+	int i;
 
 	i = 0;
-	while (*s)
+	while (**src == c)
+		(*src)++;
+	while (**src && **src != c)
 	{
-		while (*s == c)
-			s++;
-		if (*s)
+		dst[i] = **src;
+		(*src)++;
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
+
+static char	*ft_strnew_with_check(char **ptr, size_t size)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = (char*)ft_memalloc(sizeof(char) * (size + 1));
+	if (!str)
+	{
+		while (ptr[i])
 		{
+			free(ptr[i]);
 			i++;
-			while (*s && *s != c)
-				s++;
 		}
+		free(ptr);
+		return (NULL);
 	}
-	return (i);
-}
-
-static char	*is_word(char *s, char c)
-{
-	char	*str;
-
-	str = s;
-	while (*s && *s != c)
-		s++;
-	*s = '\0';
-	return (ft_strdup(str));
-}
-
-static void	is_free(char **s, size_t i)
-{
-	while (i--)
-		ft_strdel(&(s[i]));
-	free(*s);
-}
-
-static char	**is_words(char *s, char c, size_t count)
-{
-	char	**strs;
-	char	*str;
-	size_t	i;
-
-	i = 0;
-	if ((strs = (char**)ft_memalloc(sizeof(char*) * (count + 1))))
-	{
-		while (i < count)
-		{
-			while (*s == c)
-				s++;
-			if (*s)
-			{
-				if (!(str = is_word(s, c)))
-				{
-					is_free(strs, i);
-					return (NULL);
-				}
-				strs[i++] = str;
-				s += (ft_strlen(str) + 1);
-			}
-		}
-		strs[i] = NULL;
-	}
-	return (strs);
+	return (str);
 }
 
 char		**ft_strsplit(char const *s, char c)
 {
-	char	**strs;
+	int		i;
+	int		wordscounter;
 	char	*str;
+	char	**array;
 
-	if (!s || !(str = ft_strdup((char*)s)))
+	if (!s)
 		return (NULL);
-	strs = is_words(str, c, is_count_words(str, c));
-	free(str);
-	return (strs);
+	i = 0;
+	wordscounter = ft_wordscounter(s, c);
+	str = (char*)s;
+	array = (char**)ft_memalloc(sizeof(char*) * (wordscounter + 1));
+	if (!array)
+		return (NULL);
+	while (i < wordscounter)
+	{
+		array[i] = ft_strnew_with_check(array, ft_strlen_delimiter(&str, c));
+		array[i] = ft_strcpy_delimiter(array[i], &str, c);
+		i++;
+	}
+	array[i] = NULL;
+	return (array);
 }

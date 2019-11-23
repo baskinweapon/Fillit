@@ -1,31 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/19 17:23:19 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/09/19 17:29:44 by rmaxima          ###   ########.fr       */
+/*   Created: 2019/09/17 15:30:21 by mwilbur           #+#    #+#             */
+/*   Updated: 2019/09/17 15:30:48 by mwilbur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		*ft_range(int min, int max)
+int		ft_isupper(int c)
 {
-	int	*res;
-	int	i;
-
-	if (min >= max)
-		return (NULL);
-	res = (int*)malloc(sizeof(*res) * (max - min));
-	i = 0;
-	while (min < max)
-	{
-		res[i] = min;
-		i++;
-		min++;
-	}
-	return (res);
+	return (c >= 65 && c <= 90);
 }

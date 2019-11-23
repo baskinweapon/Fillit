@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printbits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/19 17:38:35 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/09/19 17:41:33 by rmaxima          ###   ########.fr       */
+/*   Created: 2019/09/19 21:08:14 by mwilbur           #+#    #+#             */
+/*   Updated: 2019/09/19 21:45:12 by mwilbur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_printbits(unsigned char c)
+int		ft_printbits(unsigned char c)
 {
 	int i;
 
@@ -22,13 +22,14 @@ void	ft_printbits(unsigned char c)
 		if (c - i >= 0)
 		{
 			write(1, "1", 1);
-			c = c - i;
-			i = i / 2;
+			c -= i;
+			i /= 2;
 		}
 		else
 		{
 			write(1, "0", 1);
-			i = i / 2;
+			i /= 2;
 		}
 	}
+	return (0);
 }

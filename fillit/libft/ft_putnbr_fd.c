@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 12:35:52 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/09/18 12:37:54 by rmaxima          ###   ########.fr       */
+/*   Created: 2019/09/14 15:49:11 by mwilbur           #+#    #+#             */
+/*   Updated: 2019/09/14 15:52:47 by mwilbur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,17 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483648)
+	long nb;
+
+	if (fd < 0)
+		return ;
+	nb = n;
+	if (nb < 0)
 	{
 		ft_putchar_fd('-', fd);
-		ft_putchar_fd('2', fd);
-		ft_putnbr_fd(147483648, fd);
+		nb *= -1;
 	}
-	else if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd((n * (-1)), fd);
-	}
-	else
-	{
-		if (n >= 10)
-			ft_putnbr_fd((n / 10), fd);
-		ft_putchar_fd(((n % 10) + '0'), fd);
-	}
+	if (nb >= 10)
+		ft_putnbr_fd(nb / 10, fd);
+	ft_putchar_fd(nb % 10 + 48, fd);
 }

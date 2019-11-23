@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmaxima <rmaxima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 12:39:43 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/09/18 13:06:08 by rmaxima          ###   ########.fr       */
+/*   Created: 2019/09/13 20:49:32 by mwilbur           #+#    #+#             */
+/*   Updated: 2019/09/17 15:26:26 by mwilbur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 char	*ft_strtrim(char const *s)
 {
-	size_t	i;
-	size_t	j;
-	size_t	size;
+	char	*src;
+	char	*end;
 
-	if (s == NULL)
+	if (!s)
 		return (NULL);
-	i = 0;
-	while (s[i] != '\0' && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
-		i++;
-	j = ft_strlen(s);
-	while ((i < j) && (s[j - 1] == ' ' || s[j - 1] == '\n' || s[j - 1] == '\t'))
-		j--;
-	if (i == j)
-		return (ft_strnew(1));
-	size = j - i;
-	return (ft_strsub(s, i, size));
+	src = (char*)s;
+	while (*src == ' ' || *src == '\n' || *src == '\t')
+		src++;
+	if (*src == '\0')
+		return (ft_strnew(0));
+	end = &src[ft_strlen(src) - 1];
+	while (*end == ' ' || *end == '\n' || *end == '\t')
+		end--;
+	return (ft_strsub(src, 0, end - src + 1));
 }
