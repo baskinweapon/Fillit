@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 13:51:13 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/11/23 17:53:45 by mwilbur          ###   ########.fr       */
+/*   Updated: 2019/12/03 16:28:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_flist		*read_tetramino(char *file)
 int			main(int argc, char **argv)
 {
 	t_flist	*list_tetramino;
+	t_flist *tmp;
 
 	if (argc != 2)
 	{
@@ -46,5 +47,11 @@ int			main(int argc, char **argv)
 		return (1);
 	}
 	filling_map(list_tetramino);
+	while(list_tetramino)
+	{
+		tmp = list_tetramino;
+		list_tetramino = list_tetramino->next;
+		free(tmp);
+	}
 	return (0);
 }

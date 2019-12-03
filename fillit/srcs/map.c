@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 13:51:24 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/11/23 17:54:58 by mwilbur          ###   ########.fr       */
+/*   Updated: 2019/12/03 16:14:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,17 @@ t_map	*new_map(int size)
 		i++;
 	}
 	return (ptr);
+}
+
+void	print_map(int size, t_map *map)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		ft_putstr(map->map[i]);
+		ft_putstr("\n");
+		i++;
+	}
 }
