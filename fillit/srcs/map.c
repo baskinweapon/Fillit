@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 13:51:24 by rmaxima           #+#    #+#             */
-/*   Updated: 2019/12/03 16:14:33 by user             ###   ########.fr       */
+/*   Updated: 2019/12/10 15:18:13 by mwilbur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,15 @@ t_map	*new_map(int size)
 	t_map	*ptr;
 	int		i;
 
-	ptr = (t_map*)malloc(sizeof(t_map));//check
-	ptr->map = (char**)malloc(sizeof(char*) * size);//check
+	if (!(ptr = (t_map*)malloc(sizeof(t_map))))
+		exit(0);
+	if (!(ptr->map = (char**)malloc(sizeof(char*) * size)))
+		exit(0);
 	i = 0;
 	while (i < size)
 	{
-		ptr->map[i] = (char*)malloc(sizeof(char) * (size + 1));//check
+		if (!(ptr->map[i] = (char*)malloc(sizeof(char) * (size + 1))))
+			exit(0);
 		ft_memset(ptr->map[i], '.', size);
 		i++;
 	}

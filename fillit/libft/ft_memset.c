@@ -6,7 +6,7 @@
 /*   By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 18:13:03 by mwilbur           #+#    #+#             */
-/*   Updated: 2019/09/07 16:34:52 by mwilbur          ###   ########.fr       */
+/*   Updated: 2019/12/08 17:21:22 by mwilbur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	*ft_memset(void *b, int c, size_t len)
 		str[i] = (unsigned char)c;
 		i++;
 	}
+	str[i] = '\0';
 	return (b);
 }

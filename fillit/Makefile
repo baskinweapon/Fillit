@@ -6,7 +6,7 @@
 #    By: mwilbur <mwilbur@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/23 17:25:35 by mwilbur           #+#    #+#              #
-#    Updated: 2019/11/23 17:59:38 by mwilbur          ###   ########.fr        #
+#    Updated: 2019/12/10 15:15:46 by mwilbur          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,3 +32,5 @@ fclean: clean
 		make -C $(LIBFT) fclean
 
 re: fclean all
+
+.PHONY: all clean fclean re
